@@ -9,7 +9,7 @@ import image from './badger_pic.png' // picture used in main webpage
 
 import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json'  // import the ABI code from this path
 
-const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"   // reference to the deployed contract for local node it will be this address.
+const jackPot = "0xC0127a6851A2135a2eFc6d651C0D0C3a0b0b7F8A"   // reference to the deployed contract for local node it will be this address.
                                                                       // if you deploy to a testnet you will get a new address after the contract is 
                                                                       // deployed so it will need to be updated
 
@@ -65,7 +65,7 @@ function App() {
       // since we are not changing the state of the blockchain we do not need a signer
       // SEE Providers and Signers in API reference for ethers.js: https://docs.ethers.org/v5/api/
 
-      const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider) // get contract object
+      const contract = new ethers.Contract(jackPot, Greeter.abi, provider) // get contract object
 
       try {
         const data = await contract.greet()     // obtain current set Greeting -> calls the function in Greeter.sol!
@@ -83,13 +83,13 @@ function App() {
     if (typeof window.ethereum !== 'undefined') {
       // We are updating the blockchain, therefore we needed to add another step when creating the contract.
       // We need to have a way to create a transaction. In order to do that we need to sign the transaction using a signer
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner()                                     // signs
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner();                                    // signs
 
-      const contract = new ethers.Contract(greeterAddress, Greeter.abi, signer) // notice how it is "signer" for a change on the blockchain
-      const transaction = await contract.setGreeting(greeting)                  // calls Contract.sol setGreeting method and uses gas
+      const contract = new ethers.Contract(jackPot, Greeter.abi, signer)
+      const config = {value: ethers.utils.parseEther('1')} // notice how it is "signer" for a change on the blockchain
+      const transaction = await contract.buyIn(config)                  // calls Contract.sol setGreeting method and uses gas
 
-      setGreetingValue('')
       await transaction.wait()        // wait for the transaction to be confirmed on the blockchain; in a prod env this might take a while
     }
   }
@@ -103,18 +103,17 @@ function App() {
         <title>Badger Blocks</title> {/* text that is on the chrome tab */}
       </Helmet>
       <header className="App-header">
-        <img src={image} alt=""/>
-        <h1 className ='primary'>Greetings using Blockchain</h1>
+        
+        <h1 className ='primary'>Blockchain Wishing Well</h1>
         <button className="connect_wallet" onClick={onClickConnect}>Connect Wallet</button> {/*when button is clicked it invokes the fetch Greeting method */}
-          <button className="btn_props" onClick={fetchGreeting}>Fetch Greeting</button> {/*when button is clicked it invokes the fetch Greeting method */}
           <div id = "set"></div>
-          <button className="btn_props" onClick={setGreeting}>Set Greeting</button>     {/*when button is clicked it invokes the set Greeting method */}
           <input className="text_box"
             onChange={e => setGreetingValue(e.target.value)}
-            placeholder="my new message"
+            placeholder="Your Wish"
             id ="set"
             value={greeting}
         />
+        <button className="btn_props" onClick={setGreeting}>Make a Wish</button>     {/*when button is clicked it invokes the set Greeting method */}  
       </header>
     </div>
   );

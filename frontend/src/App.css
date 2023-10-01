@@ -5,7 +5,7 @@
 
 .App-header {
   /* Creates a dark background with other formatting logic */
-  background-color: #282c34;
+  background-color: #a97e7e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,62 +14,149 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-header {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: #ffffff;
+}
 
+.App-header {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-header h1{
+  margin: 0;
+  font-size: 120px;
+  color: rgba(225,225,225, .01);
+  background-image: url("https://image.cdn-eztravel.com.tw/MCUWVRdRx1haWDnbhokYvCXIZ_0KDWID_oN4efDL62k/g:ce/aHR0cHM6Ly92YWNhdGlvbi5jZG4tZXp0cmF2ZWwuY29tLnR3L2ltZy9WRFIvSVRfMjU0OTM5NTMwLmpwZw.jpg");
+  background-repeat: repeat;
+  -webkit-background-clip:text;
+  animation: animate 50s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  
+  font-weight: 900;
+}
+
+  @keyframes animate {
+    0%, 100% {
+      background-position: left top;
+    }
+    25%{
+      background-position: right bottom;
+     }
+    50% {
+      background-position: left bottom;
+    }
+    75% {
+      background-position: right top;
+    }   
+}
 .primary {
   /* Greeting using blockchain color set */
   color: orangered;
 }
 
 .connect_wallet {
-  /* fetch/set greeting button properties */
-  color: black;
-  background-color: orangered;
-  border: none;
   font-size: 30px;
-  font-weight: bold;
-  border-radius: 10px; /* Makes btn round */
-  padding: 25px; /* Changes size */
-  margin-bottom: 1rem;
-}
-.connect_wallet:hover {
-  /* color changes to red when mouse over btn */
-  color: red;
-  background-color: black;
-}
-.connect_wallet:active {
-  /* btn turn white very quick for user to know they clicked the btn */
-  color: white;
-  background-color: white;
+  color: #000000;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  padding: 1rem; 
+  margin-top: 1rem;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
 }
 
+.connect_wallet:focus,
+.connect_wallet:hover {
+  color: #000000;
+}
+
+.connect_wallet:focus:after,
+.connect_wallet:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.connect_wallet:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #000000;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+
 .btn_props {
-  /* fetch/set greeting button properties */
-  color: orangered;
-  background-color: black;
-  border: none;
-  font-size: large;
-  border-radius: 10px; /* Makes btn round */
-  padding: 15px; /* Changes size */
-  margin-bottom: 1rem;
+  font-size: 30px;
+  color: #1d1d1d;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid #000000;
+  padding: 1rem; 
+  margin-top: 1rem;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
 }
+
+.btn_props:focus,
 .btn_props:hover {
-  /* color changes to red when mouse over btn */
-  color: black;
-  background-color: red;
+  color: #4b4b4b;
 }
-.btn_props:active {
-  /* btn turn white very quick for user to know they clicked the btn */
-  color: white;
-  background-color: white;
+
+.btn_props:focus:after,
+.btn_props:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.btn_props:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #000000;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
 }
 
 .text_box {
   /* Set greeting textbox properties */
-  color: white;
-  background-color: black;
-  border: none;
+  color: rgb(0, 0, 0);
+  background-color: rgba(219, 219, 219, 0.462);
+  border: 1px solid #000000;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
   font-size: 20px;
   border-radius: 10px; /* Makes btn round */
   padding: 15px; /* Changes size */
-  margin-bottom: 1rem;
+  
 }
